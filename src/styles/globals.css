@@ -1,0 +1,19 @@
+/* Carousel customization */
+.boxes-carousel .slick-dots {
+  bottom: -30px;
+}
+
+.boxes-carousel .slick-dots li button:before {
+  font-size: 8px;
+  color: #618c78;
+  opacity: 0.3;
+}
+
+.boxes-carousel .slick-dots li.slick-active button:before {
+  color: #618c78;
+  opacity: 1;
+}
+
+.boxes-carousel .slick-slide > div {
+  padding: 0 4px;
+}
