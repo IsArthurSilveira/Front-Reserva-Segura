@@ -1,0 +1,21 @@
+/// <reference types="vite/client" />
+
+declare module "react-slick" {
+	import * as React from "react";
+
+	export interface Settings {
+		dots?: boolean;
+		infinite?: boolean;
+		speed?: number;
+		slidesToShow?: number;
+		slidesToScroll?: number;
+		arrows?: boolean;
+		className?: string;
+		children?: React.ReactNode;
+		[key: string]: unknown;
+	}
+
+	export default class Slider extends React.Component<Settings> {}
+}
+
+declare module "*.css";

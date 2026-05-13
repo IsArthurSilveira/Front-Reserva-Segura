@@ -12,13 +12,11 @@ import Shop from "./components/Shop";
 import DesktopLayout from "./components/DesktopLayout";
 import { CoinIcon, XPIcon } from "./components/icons/GameIcons";
 
-// Import SVG paths
-import svgPaths from "../imports/TelaInicial/svg-6b8uzu4x17";
-import { imgGroup, imgGroup1, imgGroup2, imgGroup3, imgGroup4, imgGroup5 } from "../imports/TelaInicial/svg-kj047";
+type AppTab = "inicio" | "ligas" | "caixinhas" | "licoes" | "loja";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [currentTab, setCurrentTab] = useState("inicio");
+  const [currentTab, setCurrentTab] = useState<AppTab>("inicio");
   const [showProfile, setShowProfile] = useState(false);
 
   // Show auth screen if not authenticated
@@ -70,94 +68,64 @@ function MobileApp({
   showProfile,
   setShowProfile
 }: {
-  currentTab: string;
-  setCurrentTab: (tab: string) => void;
+  currentTab: AppTab;
+  setCurrentTab: (tab: AppTab) => void;
   showProfile: boolean;
   setShowProfile: (show: boolean) => void;
 }) {
   // If shop tab is active, show Shop component
   if (currentTab === "loja") {
     return (
-      <div className="size-full bg-white overflow-hidden">
-        {showProfile && <ProfileScreen onClose={() => setShowProfile(false)} />}
-        <div className="flex flex-col h-full">
-          <div className="flex-1 overflow-hidden">
-            <Shop onBack={() => setCurrentTab("inicio")} />
-          </div>
-          <div className="bg-white border-t border-gray-200">
-            <div className="flex items-center justify-around py-2">
-              <NavButton icon={<Home />} label="Início" active={currentTab === "inicio"} onClick={() => setCurrentTab("inicio")} />
-              <NavButton icon={<Trophy />} label="Ligas" active={currentTab === "ligas"} onClick={() => setCurrentTab("ligas")} />
-              <NavButton icon={<Store />} label="Caixinhas" active={currentTab === "caixinhas"} onClick={() => setCurrentTab("caixinhas")} />
-              <NavButton icon={<Target />} label="Lições" active={currentTab === "licoes"} onClick={() => setCurrentTab("licoes")} />
-              <NavButton icon={<Gift />} label="Loja" active={currentTab === "loja"} onClick={() => setCurrentTab("loja")} />
-            </div>
-          </div>
-        </div>
-      </div>
+      <MobileScreenShell
+        currentTab={currentTab}
+        setCurrentTab={setCurrentTab}
+        showProfile={showProfile}
+        onCloseProfile={() => setShowProfile(false)}
+      >
+        <Shop onBack={() => setCurrentTab("inicio")} />
+      </MobileScreenShell>
     );
   }
 
   // If leagues tab is active
   if (currentTab === "ligas") {
     return (
-      <div className="size-full bg-white overflow-hidden">
-        {showProfile && <ProfileScreen onClose={() => setShowProfile(false)} />}
-        <div className="flex flex-col h-full">
-          <div className="flex-1 overflow-hidden">
-            <Leagues onBack={() => setCurrentTab("inicio")} />
-          </div>
-          <div className="bg-white border-t border-gray-200">
-            <div className="flex items-center justify-around py-2">
-              <NavButton icon={<Home />} label="Início" active={currentTab === "inicio"} onClick={() => setCurrentTab("inicio")} />
-              <NavButton icon={<Trophy />} label="Ligas" active={currentTab === "ligas"} onClick={() => setCurrentTab("ligas")} />
-              <NavButton icon={<Store />} label="Caixinhas" active={currentTab === "caixinhas"} onClick={() => setCurrentTab("caixinhas")} />
-              <NavButton icon={<Target />} label="Lições" active={currentTab === "licoes"} onClick={() => setCurrentTab("licoes")} />
-              <NavButton icon={<Gift />} label="Loja" active={currentTab === "loja"} onClick={() => setCurrentTab("loja")} />
-            </div>
-          </div>
-        </div>
-      </div>
+      <MobileScreenShell
+        currentTab={currentTab}
+        setCurrentTab={setCurrentTab}
+        showProfile={showProfile}
+        onCloseProfile={() => setShowProfile(false)}
+      >
+        <Leagues onBack={() => setCurrentTab("inicio")} />
+      </MobileScreenShell>
     );
   }
 
   // If lessons tab is active
   if (currentTab === "licoes") {
     return (
-      <div className="size-full flex flex-col">
-        <div className="flex-1 overflow-hidden">
-          <Lessons onBack={() => setCurrentTab("inicio")} />
-        </div>
-        <div className="bg-white border-t border-gray-200">
-          <div className="flex items-center justify-around py-2">
-            <NavButton icon={<Home />} label="Início" active={currentTab === "inicio"} onClick={() => setCurrentTab("inicio")} />
-            <NavButton icon={<Trophy />} label="Ligas" active={currentTab === "ligas"} onClick={() => setCurrentTab("ligas")} />
-            <NavButton icon={<Store />} label="Caixinhas" active={currentTab === "caixinhas"} onClick={() => setCurrentTab("caixinhas")} />
-            <NavButton icon={<Target />} label="Lições" active={currentTab === "licoes"} onClick={() => setCurrentTab("licoes")} />
-            <NavButton icon={<Gift />} label="Loja" active={currentTab === "loja"} onClick={() => setCurrentTab("loja")} />
-          </div>
-        </div>
-      </div>
+      <MobileScreenShell
+        currentTab={currentTab}
+        setCurrentTab={setCurrentTab}
+        showProfile={showProfile}
+        onCloseProfile={() => setShowProfile(false)}
+      >
+        <Lessons onBack={() => setCurrentTab("inicio")} />
+      </MobileScreenShell>
     );
   }
 
   // If boxes tab is active
   if (currentTab === "caixinhas") {
     return (
-      <div className="size-full flex flex-col">
-        <div className="flex-1 overflow-hidden">
-          <Boxes onBack={() => setCurrentTab("inicio")} />
-        </div>
-        <div className="bg-white border-t border-gray-200">
-          <div className="flex items-center justify-around py-2">
-            <NavButton icon={<Home />} label="Início" active={currentTab === "inicio"} onClick={() => setCurrentTab("inicio")} />
-            <NavButton icon={<Trophy />} label="Ligas" active={currentTab === "ligas"} onClick={() => setCurrentTab("ligas")} />
-            <NavButton icon={<Store />} label="Caixinhas" active={currentTab === "caixinhas"} onClick={() => setCurrentTab("caixinhas")} />
-            <NavButton icon={<Target />} label="Lições" active={currentTab === "licoes"} onClick={() => setCurrentTab("licoes")} />
-            <NavButton icon={<Gift />} label="Loja" active={currentTab === "loja"} onClick={() => setCurrentTab("loja")} />
-          </div>
-        </div>
-      </div>
+      <MobileScreenShell
+        currentTab={currentTab}
+        setCurrentTab={setCurrentTab}
+        showProfile={showProfile}
+        onCloseProfile={() => setShowProfile(false)}
+      >
+        <Boxes onBack={() => setCurrentTab("inicio")} />
+      </MobileScreenShell>
     );
   }
 
@@ -172,7 +140,7 @@ function HomeContent({
   setCurrentTab,
   setShowProfile
 }: {
-  setCurrentTab: (tab: string) => void;
+  setCurrentTab: (tab: AppTab) => void;
   setShowProfile?: (show: boolean) => void;
 }) {
   return (
@@ -410,6 +378,30 @@ function HomeContent({
   );
 }
 
+function MobileScreenShell({
+  currentTab,
+  setCurrentTab,
+  showProfile,
+  onCloseProfile,
+  children
+}: {
+  currentTab: AppTab;
+  setCurrentTab: (tab: AppTab) => void;
+  showProfile: boolean;
+  onCloseProfile: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="size-full bg-white overflow-hidden">
+      {showProfile && <ProfileScreen onClose={onCloseProfile} />}
+      <div className="flex flex-col h-full">
+        <div className="flex-1 overflow-hidden">{children}</div>
+        <BottomNav currentTab={currentTab} setCurrentTab={setCurrentTab} />
+      </div>
+    </div>
+  );
+}
+
 // Mission Card Component
 function MissionCard({
   icon: Icon,
@@ -455,6 +447,26 @@ function MissionCard({
           ✓ Missão Completa
         </div>
       )}
+    </div>
+  );
+}
+
+function BottomNav({
+  currentTab,
+  setCurrentTab
+}: {
+  currentTab: AppTab;
+  setCurrentTab: (tab: AppTab) => void;
+}) {
+  return (
+    <div className="bg-white border-t border-gray-200">
+      <div className="flex items-center justify-around py-2">
+        <NavButton icon={<Home />} label="Início" active={currentTab === "inicio"} onClick={() => setCurrentTab("inicio")} />
+        <NavButton icon={<Trophy />} label="Ligas" active={currentTab === "ligas"} onClick={() => setCurrentTab("ligas")} />
+        <NavButton icon={<Store />} label="Caixinhas" active={currentTab === "caixinhas"} onClick={() => setCurrentTab("caixinhas")} />
+        <NavButton icon={<Target />} label="Lições" active={currentTab === "licoes"} onClick={() => setCurrentTab("licoes")} />
+        <NavButton icon={<Gift />} label="Loja" active={currentTab === "loja"} onClick={() => setCurrentTab("loja")} />
+      </div>
     </div>
   );
 }

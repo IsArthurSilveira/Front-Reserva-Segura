@@ -3,9 +3,11 @@ import { ReactNode, useState } from "react";
 import ProfileScreen from "./ProfileScreen";
 import { CoinIcon, XPIcon } from "./icons/GameIcons";
 
+type DesktopTab = "inicio" | "ligas" | "caixinhas" | "licoes" | "loja";
+
 interface DesktopLayoutProps {
-  currentTab: string;
-  onTabChange: (tab: string) => void;
+  currentTab: DesktopTab;
+  onTabChange: (tab: DesktopTab) => void;
   children: ReactNode;
 }
 
