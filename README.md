@@ -22,7 +22,7 @@ Reserva Segura é uma plataforma educacional que combina gamificação com educa
 - **Lucide React** para ícones
 - **React Slick** para carrosséis
 - **Vite** como bundler
-- **pnpm** como gerenciador de pacotes
+- **npm** como gerenciador de pacotes
 
 ## 📦 Como Usar no VS Code
 
@@ -30,12 +30,7 @@ Reserva Segura é uma plataforma educacional que combina gamificação com educa
 
 Certifique-se de ter instalado:
 - [Node.js](https://nodejs.org/) (versão 16 ou superior)
-- [pnpm](https://pnpm.io/) (recomendado) ou npm
-
-Para instalar o pnpm:
-```bash
-npm install -g pnpm
-```
+- [npm](https://www.npmjs.com/) (recomendado)
 
 ### 2. Clonar/Baixar o Projeto
 
@@ -52,21 +47,11 @@ cd reserva-segura
 ### 3. Instalar Dependências
 
 ```bash
-pnpm install
-```
-
-ou com npm:
-```bash
 npm install
 ```
 
 ### 4. Executar o Projeto
 
-```bash
-pnpm run dev
-```
-
-ou com npm:
 ```bash
 npm run dev
 ```
@@ -122,9 +107,9 @@ O aplicativo é totalmente responsivo com:
 
 ## 🚀 Scripts Disponíveis
 
-- `pnpm run dev` - Inicia o servidor de desenvolvimento
-- `pnpm run build` - Cria build de produção
-- `pnpm run preview` - Visualiza build de produção localmente
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Cria build de produção
+- `npm run preview` - Visualiza build de produção localmente
 
 ## 🔧 Configuração do VS Code (Recomendado)
 
